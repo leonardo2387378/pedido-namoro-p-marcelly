@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Pedido Irrecusável</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 80px;
+      position: relative;
+      text-align: center;
+    }
+    video.bg-video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.5) blur(2px);
+      opacity: 0.8;
+    }
+    h1 { font-size: 2.8rem; text-shadow: 1px 1px 8px rgba(0,0,0,0.8); }
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      margin-top: 30px;
+      justify-content: center;
+      position: relative;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease;
+    }
+    #sim { background: #4CAF50; }
+    #nao {
+      background: #f44336;
+    }
+    .mensagem {
+      font-size: 2rem;
+      margin-top: 40px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+    }
+  </style>
+</head>
+<body>
+
+<div style="position: fixed; bottom: 10px; left: 10px; z-index: 10;">
+  <iframe 
+    width="200" 
+    height="113"
+    src="https://www.youtube.com/embed/Zs0tcD7LpuI?autoplay=1&loop=1&playlist=Zs0tcD7LpuI" 
+    title="YouTube video player"
+    frameborder="0" 
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+  ></iframe>
+</div>
+
+
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="vasco.mp4" type="video/mp4">
+    Seu navegador não suporta vídeos em segundo plano.
+  </video>
+
+  <h1>Quer namorar comigo? 🥰</h1>
+  <div class="buttons">
+    <button id="sim">Sim 💖</button>
+    <button id="nao">Não 😢</button>
+  </div>
+  <div id="resposta" class="mensagem"></div>
+
+  <script>
+    const sim = document.getElementById('sim');
+    const nao = document.getElementById('nao');
+    const msg = document.getElementById('resposta');
+
+    sim.addEventListener('click', () => {
+      msg.textContent = "te amo minha gata, tmj 💘";
+      sim.style.display = 'none';
+      nao.style.display = 'none';
+      setTimeout(() => {
+        window.location.href = "https://www.youtube.com/watch?v=Q0_hMiPKRE4";
+      }, 3000); // redireciona após 3 segundos
+    });
+    function moverBotaoNao() {
+      nao.style.left = Math.random() * (window.innerWidth - nao.offsetWidth) + 'px';
+      nao.style.top = Math.random() * (window.innerHeight - nao.offsetHeight) + 'px';
+    }
+    nao.addEventListener('mouseover', moverBotaoNao);
+    nao.addEventListener('click', moverBotaoNao);
+  </script>
+
+</body>
+</html>
